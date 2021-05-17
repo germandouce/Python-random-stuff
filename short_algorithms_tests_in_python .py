@@ -246,7 +246,7 @@ print(type(conjunto_con_elementos))
 print(type(tupla))
 print(type(list))
 '''
-#ejemplo shiao
+#ejemplo numerico
 '''
 n=10
 xKMenosUno = []
@@ -254,6 +254,7 @@ for i in range(n):
     xKMenosUno.append(0)
 print(xKMenosUno)
 '''
+#ejemplos de busqueda
 '''
 def llorar2(msj):
     llorar = False
