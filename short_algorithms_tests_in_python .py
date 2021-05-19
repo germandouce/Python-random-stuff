@@ -280,3 +280,30 @@ msj = input()
 if llorar2(msj) == True:
     print('lloro')
 '''
+#creacion de tablero
+'''
+tablero_1=[]
+for columna in range(4):
+    tablero_1.append([])
+    for fila in range(4):
+        tablero_1[columna]=[' ']*4
+for columna in tablero_1:
+    print(columna)
+
+print()
+'''
+'''
+l=[]
+for i in range(4):
+  l.append([])
+for i in range(4):
+  l[i]=[' ']*4
+for i in range(4):
+    print (l[i])
+'''
+'''
+l=[1,2,3]
+a='hola' 
+t=(a,l)
+print(a)
+'''
