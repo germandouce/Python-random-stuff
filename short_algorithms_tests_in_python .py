@@ -280,6 +280,25 @@ msj = input()
 if llorar2(msj) == True:
     print('lloro')
 '''
+#ejemplo de pasaje x referencia
+'''
+def modifica_lista_1(l):
+    l[0] = 'modif'
+l = [1,2,3]
+
+modifica_lista_1(l)
+print(l)
+
+#ejemplo de pasaje x valor
+def modifica_lista_2(l):
+    l ='modif'
+    return l
+
+l = [1,2,3]
+l_modif = modifica_lista_2(l)
+print(l_modif)
+'''
+
 #creacion de tablero
 '''
 tablero_1=[]
@@ -302,8 +321,133 @@ for i in range(4):
     print (l[i])
 '''
 '''
-l=[1,2,3]
-a='hola' 
-t=(a,l)
-print(a)
+tablero_1=[]
+for fila in range(4):
+    tablero_1.append([])
+    for columna in range(4):
+        tablero_1[fila].append('  1  ')   
+''' 
+'''
+for fila in tablero_1:
+    print(fila)
+print(tablero_1)
+print(tablero_1[fila])
+'''
+'''
+for i in range(4):
+    for j in range(4):
+        print(tablero_1[i][j], end =' ')
+    print()
+'''
+'''
+tam_matriz = int(input('ingrese tamano: '))
+
+matriz_identidad_1 = []
+for i in range(tam_matriz):
+    fila = []
+    for j in range(tam_matriz):
+        if i == j:
+            fila.append('1')
+        else:
+            fila.append('0')
+    matriz_identidad_1.append(fila)
+#tam_matriz = int(input('ingrese tamano: '))
+
+matriz_identidad = []
+for fila in range(tam_matriz):
+    matriz_identidad.append([])
+    for columna in range(tam_matriz):
+        if fila == columna:
+            matriz_identidad[fila].append('1')
+        else:
+            matriz_identidad[fila].append('0')
+
+for i in range(tam_matriz):
+    print(matriz_identidad_1[i],)
+    print("\n")
+
+print('la otra')
+
+for i in range(tam_matriz):
+    for j in range(tam_matriz):
+        print(matriz_identidad[i][j],end="   ")
+    print("\n")
+'''
+'''
+for i in range(n): 
+    for j in range (n): 
+        print(matriz[i][j]) # seteale el end a tab acá
+    print(salto de línea)
+'''
+'''
+for i in range(tam_matriz):
+    for j in range(tam_matriz):
+        print(matriz_identidad[i][j], end=",")
+    print("\n")
+'''
+'''
+for i in range(tam_matriz):
+    for j in range(tam_matriz):
+        nuevo_elemento = input('ingrese numero: ')
+        matriz_identidad[i][j] = nuevo_elemento
+'''
+#cargar tablero
+
+#from random import randint
+#import random
+from random import choice
+from random import randint
+
+'''
+tablero_1=[]
+for fila in range(4):
+    tablero_1.append([])
+    for columna in range(4):
+        tablero_1[fila].append('')
+
+print('tablero vacio\n')
+for i in range(4):
+    for j in range(4):
+        print(tablero_1[i][j], end ='   ')
+    print()
+
+
+def lista_de_elementos():
+    elementos_xa_cargar =[]
+    elementos = [1,2,3,5,6,7,8,]
+    elegido = randint(elementos)
+    elementos_xa_cargar.append(elegido)*2
+    elementos.pop(elegido)
+    
+    return elementos_xa_cargar
+
+for fila in range(4):
+    for columna in range(4):
+        tablero_1[fila][columna] = elemento()
+
+
+print('tablero cargado\n')
+for i in range(4):
+        for j in range(4):
+            print(tablero_1[i][j], end ='  ')
+        print()
+'''
+elementos_xa_cargar =[]
+elementos = [1,2,3,4,5,6,7,8]
+for i in range(8):
+    print(elementos)
+    elegido = choice(elementos)
+    elementos_xa_cargar.append(elegido)
+    elementos_xa_cargar.append(elegido)
+    elementos.pop(elementos.index(elegido))
+print(elementos_xa_cargar)
+print(len(elementos))
+print(len(elementos_xa_cargar))
+'''
+def hola():
+    elementos = [1,2,3,4,5,6,7,8,]
+    elementos_duplicados = elementos.copy()
+    elementos.pop(0)
+    return elementos, elementos_duplicados
+print(hola())
 '''
