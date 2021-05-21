@@ -506,3 +506,136 @@ print(ord(coord)-97)
 dicconver = {"a":0,"b":1}
 print(dicconver["a"])
 '''
+
+tam_matriz = int(input('tamaño: '))
+
+tablero_1=[]
+for fila in range(tam_matriz):
+    tablero_1.append([])
+    for columna in range(tam_matriz):
+        tablero_1[fila].append('')
+
+elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S',
+'Cl', 'Zr', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga',  'Ge',
+'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
+'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu', 'Pt', 'Au', 'Hg', 
+'Pb', 'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'U', 'Np','Es', 'Rf']
+
+elementos_xa_tablero =[]
+
+for i in range(int((tam_matriz**2)/2)):
+    elegido = choice(elementos)
+    elementos_xa_tablero.append(elegido)
+    elementos_xa_tablero.append(elegido)
+    elementos.pop(elementos.index(elegido))
+
+print(int((tam_matriz**2)/2))
+shuffle(elementos_xa_tablero)
+print(elementos_xa_tablero)
+
+indice = 0
+for fila in range(tam_matriz):
+    for columna in range(tam_matriz):
+        tablero_1[fila][columna] = [elementos_xa_tablero[indice],'*']   #en la pos i,j meto una lista con 2
+        indice += 1      #elementos, el 1ero la ficha el 2do un indicador de si fue adivinada o no
+                            # * signfica NO adiviado. ' ', ya adivinada
+# print('tablero cargado\n')
+# for i in range(tam_matriz):
+#         for j in range(tam_matriz):
+#             if tablero_1[i][j][1] == ' ':   #[1] es el indicador de adivinado
+#                 print(tablero_1[i][j][0].ljust(2), end ='  ')
+#             else:
+#                 print('*'.ljust(2), end = '  ')
+#         print()
+
+# print(tablero_1)
+
+def ingreso_coordendas() -> tuple:
+    """
+    POST: devuelve una tupla con las coordenadas escritas como enteros correspondientes a la matriz
+    """
+    fila = int(input('ingrese fila: ')) - 1     #resto 1 puesto que en las listas de lisats 
+    columna =  int(input('ingrese columna: ')) -1 #del tablero estas empiezan con indice "0"
+    return fila, columna
+
+
+def chequeo(tablero_1:list, carta_1:tuple, carta_2: tuple) -> bool:
+    """
+    POST: devuelve el bool perdio, (por si o por no). si no
+    perdio, además desbloquea esa ficha del tablero
+    """
+    perdio = True
+    print(carta_1[0] +1, carta_1[1] +1)
+    print(carta_2[0] +1, carta_2[1] +1)
+    if ( tablero_1[ carta_1[0] ][ carta_1[1] ] ) == ( tablero_1 [ carta_2[0] ][ carta_2[1] ] ) :
+        
+        tablero_1 [ carta_1[0] ][ carta_1[1] ] [1] = ' '   #si adivino, cambio * por espacio ' '
+        tablero_1 [ carta_2[0] ][ carta_2[1] ] [1] = ' '
+        perdio = False
+        print('Adivino!, puede jugar de nuevo')
+    
+    return perdio
+
+def no_gano_el_juego(tablero_1):
+    """
+    PRE: trae el tablero
+    POST: devuelve el bool gano_el_juego, True si no gano, Falso si gano
+    """
+    #hago algunos comentarios xa mejor comprension
+    no_gano_nadie = False
+    #es decir, es verdadero que alguien gano
+    for i in range(tam_matriz):
+            for j in range(tam_matriz):   
+                if tablero_1[i][j][1] == '*': #si llego a encontrar un *, es decir, un NO ADIVINADO
+                    #entonces, es falso que alguien gano. En ese caso, 
+                    no_gano_nadie = True    #es valido decir q no gano nadie                   
+
+    return no_gano_nadie
+
+    
+no_gano_nadie = True    #lo llevo por la positiva para facilitar la funcion no_gano_el_juego
+perdio = False
+
+while not perdio and no_gano_nadie::
+        print(turno)
+        if turno == 0:
+            print('trablero 1')
+            tablero = tablero_cargado_1
+        else:
+            print('tablero 2')
+            tablero = tablero_cargado_2
+
+    print('tablero modificado\n')
+    for i in range(tam_matriz):
+            for j in range(tam_matriz):
+                if tablero_1[i][j][1] == ' ':   #[1] es el indicador de adivinado
+                    print(tablero_1[i][j][0].ljust(2), end ='  ') #[0] es el indicador de adivinado
+                else:
+                    print('*'.ljust(2), end = '  ')
+            print()
+
+    print(tablero_1)
+
+    print('ingrese coordendas carta 1')
+    carta_1 = ingreso_coordendas()
+
+    print('ingrese coordendas carta 2')
+    carta_2 = ingreso_coordendas()
+
+    while carta_1 == carta_2:           #no quiero q ingrese 2 veces las mismas
+        print('Por ingrese coordenadas distintas')   #coordenadas xq me 
+                                                     #destapa la carta. Tambien lo obligo a dar 
+        print('ingrese coordendas carta 1')     # vuelta ambas cartas  "a la vez"
+
+        carta_1 = ingreso_coordendas()      
+        print('ingrese coordendas carta 2')
+        carta_2 = ingreso_coordendas()                   
+    
+    perdio = chequeo(tablero_1, carta_1, carta_2)
+    no_gano_nadie = no_gano_el_juego(tablero_1)
+    
+
+print("GANO!!")
+
+
+
