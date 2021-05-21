@@ -391,18 +391,21 @@ for i in range(tam_matriz):
         nuevo_elemento = input('ingrese numero: ')
         matriz_identidad[i][j] = nuevo_elemento
 '''
+
 #cargar tablero
 
 #from random import randint
 #import random
-from random import choice
-from random import randint
 
+from random import choice, shuffle
+from random import randint
 '''
+tam_matriz = int(input('tamaño: '))
+
 tablero_1=[]
-for fila in range(4):
+for fila in range(tam_matriz):
     tablero_1.append([])
-    for columna in range(4):
+    for columna in range(tam_matriz):
         tablero_1[fila].append('')
 
 print('tablero vacio\n')
@@ -412,42 +415,94 @@ for i in range(4):
     print()
 
 
-def lista_de_elementos():
-    elementos_xa_cargar =[]
-    elementos = [1,2,3,5,6,7,8,]
-    elegido = randint(elementos)
-    elementos_xa_cargar.append(elegido)*2
-    elementos.pop(elegido)
-    
-    return elementos_xa_cargar
+elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S',
+'Cl', 'Zr', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga',  'Ge',
+'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
+'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu', 'Pt', 'Au', 'Hg', 
+'Pb', 'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'U', 'Np','Es', 'Rf']
 
-for fila in range(4):
-    for columna in range(4):
-        tablero_1[fila][columna] = elemento()
+elementos_xa_tablero =[]
 
+for i in range(int((tam_matriz**2)/2)):
+    elegido = choice(elementos)
+    elementos_xa_tablero.append(elegido)
+    elementos_xa_tablero.append(elegido)
+    elementos.pop(elementos.index(elegido))
+
+print(int((tam_matriz**2)/2))
+shuffle(elementos_xa_tablero)
+print(elementos_xa_tablero)
+
+indice = 0
+for fila in range(tam_matriz):
+    for columna in range(tam_matriz):
+        tablero_1[fila][columna] = elementos_xa_tablero[indice]
+        indice += 1 
 
 print('tablero cargado\n')
-for i in range(4):
-        for j in range(4):
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
             print(tablero_1[i][j], end ='  ')
         print()
+
 '''
-elementos_xa_cargar =[]
-elementos = [1,2,3,4,5,6,7,8]
-for i in range(8):
-    print(elementos)
-    elegido = choice(elementos)
-    elementos_xa_cargar.append(elegido)
-    elementos_xa_cargar.append(elegido)
-    elementos.pop(elementos.index(elegido))
-print(elementos_xa_cargar)
-print(len(elementos))
-print(len(elementos_xa_cargar))
+#xa copiar elementos mas facil
 '''
-def hola():
-    elementos = [1,2,3,4,5,6,7,8,]
-    elementos_duplicados = elementos.copy()
-    elementos.pop(0)
-    return elementos, elementos_duplicados
-print(hola())
+dat=open('elementos.txt')
+a=dat.readlines()
+dat.close()
+for ele in a:
+    ele=ele[:2]
+    print(f" '{ele}', ",end ='')
+'''
+
+#no sirve
+'''
+elementos = ['a','b','c','d','e','f','g','h']
+indice = [1,2,3,4,5,6,7,8,]
+ya_elegidos = []
+for indice in range(indice):
+    ya_elegidos.append(elementos[indice])
+    
+for fila in range(4):
+    for columna in range(4):
+        tablero_1[fila][columna] = 5
+
+'''
+#chequeo eles repes
+'''
+elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 
+    'S', 'Cl', 'Zr', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 
+    'Ga',  'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te', 
+    'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu', 'Pt', 'Au', 'Hg', 'Pb', 
+    'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'U', 'Np','Es', 'Rf']
+
+for ele in elementos:
+    if elementos.count(ele)>1:
+        print('cuidad0',ele, 'duplicado!')
+    
+print('Todo OK!, No hay duplicados')
+'''
+'''
+#ejemplo de uso de pass
+def prueba (a):
+    pass
+
+b=4
+prueba(b)
+print('hola')
+'''
+#recomendacion guido xa convertir letras a indices
+
+#Version ingenieri
+
+'''
+print(ord("a"))
+print(ord("b"))
+coord = input("Ingrese primer coordenada (a-z)")
+print(ord(coord)-97)
+
+#Version rudimentaria
+dicconver = {"a":0,"b":1}
+print(dicconver["a"])
 '''
