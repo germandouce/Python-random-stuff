@@ -579,63 +579,74 @@ def chequeo(tablero_1:list, carta_1:tuple, carta_2: tuple) -> bool:
 def no_gano_el_juego(tablero_1):
     """
     PRE: trae el tablero
-    POST: devuelve el bool gano_el_juego, True si no gano, Falso si gano
+    POST: devuelve el bool no_gano_juego, True si no gano, Falso si gano
     """
     #hago algunos comentarios xa mejor comprension
-    no_gano_nadie = False
+    no_gano_juego = False
     #es decir, es verdadero que alguien gano
     for i in range(tam_matriz):
             for j in range(tam_matriz):   
                 if tablero_1[i][j][1] == '*': #si llego a encontrar un *, es decir, un NO ADIVINADO
                     #entonces, es falso que alguien gano. En ese caso, 
-                    no_gano_nadie = True    #es valido decir q no gano nadie                   
+                    no_gano_juego = True    #es valido decir q no gano nadie                   
 
-    return no_gano_nadie
+    return no_gano_juego
 
-    
-no_gano_nadie = True    #lo llevo por la positiva para facilitar la funcion no_gano_el_juego
-perdio = False
 
-while not perdio and no_gano_nadie::
-        print(turno)
-        if turno == 0:
-            print('trablero 1')
-            tablero = tablero_cargado_1
-        else:
-            print('tablero 2')
-            tablero = tablero_cargado_2
+def hacer_memoria(tablero_1) -> bool:
+    """
+    """
+    no_gano_juego= True    #lo llevo por la positiva para facilitar la funcion no_gano_el_juego
+    perdio = False
+    while not perdio and no_gano_juego:
+        print('tablero modificado\n')
+        for i in range(tam_matriz):
+                for j in range(tam_matriz):
+                    if tablero_1[i][j][1] == ' ':   #[1] es el indicador de adivinado
+                        print(tablero_1[i][j][0].ljust(2), end ='  ') #[0] es el indicador de adivinado
+                    else:
+                        print('*'.ljust(2), end = '  ')
+                print()
 
-    print('tablero modificado\n')
-    for i in range(tam_matriz):
-            for j in range(tam_matriz):
-                if tablero_1[i][j][1] == ' ':   #[1] es el indicador de adivinado
-                    print(tablero_1[i][j][0].ljust(2), end ='  ') #[0] es el indicador de adivinado
-                else:
-                    print('*'.ljust(2), end = '  ')
-            print()
+        print(tablero_1)
 
-    print(tablero_1)
+        print('ingrese coordendas carta 1')
+        carta_1 = ingreso_coordendas()
 
-    print('ingrese coordendas carta 1')
-    carta_1 = ingreso_coordendas()
-
-    print('ingrese coordendas carta 2')
-    carta_2 = ingreso_coordendas()
-
-    while carta_1 == carta_2:           #no quiero q ingrese 2 veces las mismas
-        print('Por ingrese coordenadas distintas')   #coordenadas xq me 
-                                                     #destapa la carta. Tambien lo obligo a dar 
-        print('ingrese coordendas carta 1')     # vuelta ambas cartas  "a la vez"
-
-        carta_1 = ingreso_coordendas()      
         print('ingrese coordendas carta 2')
-        carta_2 = ingreso_coordendas()                   
+        carta_2 = ingreso_coordendas()
+
+        while carta_1 == carta_2:           #no quiero q ingrese 2 veces las mismas
+            print('Por ingrese coordenadas distintas')   #coordenadas xq me 
+                                                        #destapa la carta. Tambien lo obligo a dar 
+            print('ingrese coordendas carta 1')     # vuelta ambas cartas  "a la vez"
+
+            carta_1 = ingreso_coordendas()      
+            print('ingrese coordendas carta 2')
+            carta_2 = ingreso_coordendas()                   
+        
+        perdio = chequeo(tablero_1, carta_1, carta_2)
+        
+        no_gano_juego = no_gano_el_juego(tablero_1)
     
-    perdio = chequeo(tablero_1, carta_1, carta_2)
-    no_gano_nadie = no_gano_el_juego(tablero_1)
-    
+    return no_gano_juego
 
-print("GANO!!")
+def jugando(tablero_1):
+    no_gano = True
+    while no_gano:
+        turno = 0
+        while turno !=2 and no_gano:
+            print(turno)
+            if turno == 0:
+                print('trablero 1')
+                tablero = tablero_1
+            else:
+                print('tablero 2')
+                tablero = tablero_1
+            no_gano = hacer_memoria(tablero)
+            # levantar_carta()
+            # guardar_carta()
+            # jugar_carta()
+            turno += 1
 
-
-
+jugando(tablero_1)
