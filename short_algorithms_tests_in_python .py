@@ -507,20 +507,59 @@ dicconver = {"a":0,"b":1}
 print(dicconver["a"])
 '''
 
-tam_matriz = int(input('tamaño: '))
+#creacion de tablero
 
+'''
 tablero_1=[]
 for fila in range(tam_matriz):
     tablero_1.append([])
     for columna in range(tam_matriz):
         tablero_1[fila].append('')
+'''
+#carga con randint
+'''
+tam_matriz = int( (input('tamaño: ') ) )
+
+elementos = ['A','B','C','D','E','F','G','H','I','J','K','L']
+
+elementos_xa_tablero = []
+
+for i in range( int( (tam_matriz**2) /2 ) ):
+
+        indice = randint(0,len(elementos)-1)
+        
+        elegido = elementos[indice]
+        elementos.pop(indice)
+
+        elementos_xa_tablero.append(elegido)
+        elementos_xa_tablero.append(elegido)
+
+print(elementos_xa_tablero)
+
+for fila in range (tam_matriz):
+    for columna in range (tam_matriz) :
+        indice = randint (0,len(elementos_xa_tablero)-1)
+        tablero_1[fila][columna] = [elementos_xa_tablero [indice],'*']
+        elementos_xa_tablero.pop(indice)                              
+        
+
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
+            print(tablero_1[i][j][0], end =' ')
+        print()
+'''        
+#carga con shuffle
+'''
+
+tam_matriz = int( (input('tamaño: ') ) )
 
 elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S',
 'Cl', 'Zr', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga',  'Ge',
 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
 'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu', 'Pt', 'Au', 'Hg', 
 'Pb', 'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'U', 'Np','Es', 'Rf']
-
+'''
+'''
 elementos_xa_tablero =[]
 
 for i in range(int((tam_matriz**2)/2)):
@@ -532,13 +571,45 @@ for i in range(int((tam_matriz**2)/2)):
 print(int((tam_matriz**2)/2))
 shuffle(elementos_xa_tablero)
 print(elementos_xa_tablero)
+'''
+'''
+elementos = ['A','B','C','D','E','F','G','H','I','J','K','L']
 
-indice = 0
+elementos_xa_tablero = []
+
+print(len(elementos))
+for i in range(int((tam_matriz**2)/2)):
+        indice = randint(0,len(elementos)-1)
+
+        elegido = elementos[indice]
+        elementos.pop(indice)
+
+        elementos_xa_tablero.append(elegido)
+        elementos_xa_tablero.append(elegido)
+
+print(elementos_xa_tablero)
+
+#shuffle(elementos) #shuffle es un metodo, no devuelve nada.
+#choice es una funcion, devuelve un elemento random del coajunto
+
 for fila in range(tam_matriz):
     for columna in range(tam_matriz):
-        tablero_1[fila][columna] = [elementos_xa_tablero[indice],'*']   #en la pos i,j meto una lista con 2
-        indice += 1      #elementos, el 1ero la ficha el 2do un indicador de si fue adivinada o no
+        indice = randint(0,len(elementos_xa_tablero)-1)
+        tablero_1[fila][columna] = [elementos_xa_tablero[indice],'*']
+        elementos_xa_tablero.pop(indice)                              
+        
+        #en la pos i,j meto una lista con 2
+                #elementos, el 1ero la ficha el 2do un indicador de si fue adivinada o no
                             # * signfica NO adiviado. ' ', ya adivinada
+
+print('tablero cargado\n')
+
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
+            print(tablero_1[i][j][0], end =' ')   #[1] es el indicador de adivinado
+        print()
+'''
+'''
 # print('tablero cargado\n')
 # for i in range(tam_matriz):
 #         for j in range(tam_matriz):
@@ -650,3 +721,4 @@ def jugando(tablero_1):
             turno += 1
 
 jugando(tablero_1)
+'''
