@@ -572,6 +572,7 @@ print(int((tam_matriz**2)/2))
 shuffle(elementos_xa_tablero)
 print(elementos_xa_tablero)
 '''
+#carga con randint
 '''
 elementos = ['A','B','C','D','E','F','G','H','I','J','K','L']
 
@@ -721,4 +722,129 @@ def jugando(tablero_1):
             turno += 1
 
 jugando(tablero_1)
+'''
+#random test
+'''
+import random
+
+a = random.randint(1,10)
+print(a)
+'''
+#Espejar filas y columnas
+#Juego cart toti
+'''
+tam_matriz = int(input('tamaño: '))
+
+tablero_1=[]
+for fila in range(tam_matriz):
+    tablero_1.append([])
+    for columna in range(tam_matriz):
+        tablero_1[fila].append('')
+
+elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S',
+'Cl', 'Zr', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga',  'Ge',
+'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
+'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu', 'Pt', 'Au', 'Hg', 
+'Pb', 'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'U', 'Np','Es', 'Rf']
+'''
+'''
+elementos_xa_tablero =[]
+
+for i in range(int((tam_matriz**2)/2)):
+    elegido = choice(elementos)
+    elementos_xa_tablero.append(elegido)
+    elementos_xa_tablero.append(elegido)
+    elementos.pop(elementos.index(elegido))
+
+print(int((tam_matriz**2)/2))
+shuffle(elementos_xa_tablero)
+
+indice = 0
+for fila in range(tam_matriz):
+    for columna in range(tam_matriz):
+        tablero_1[fila][columna] = elementos_xa_tablero[indice]
+        indice += 1 
+
+print('tablero cargado\n')
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
+            print(tablero_1[i][j], end ='  ')
+        print()
+
+sentido = randint(1,2)
+#if sentido == 1:
+'''
+#HORIZONTAL//
+'''
+filas_aux = []
+
+for fila in range( len(tablero_1)): # fila: 0, 1, 2, 3, 4, 5, 6, 7
+    if fila < (len(tablero_1) / 2):
+        filas_aux.append(tablero_1 [fila])
+        tablero_1[fila] = tablero_1 [ len(tablero_1)-1 - fila ]
+        #print(tablero_1[fila])             8      
+
+    else:
+        tablero_1[fila] = filas_aux [len(tablero_1)-1 - fila]
+
+#for fila in filas_aux:
+#print(filas_aux[0])
+
+print('tablero espejado\n')
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
+            print(tablero_1[i][j], end ='  ')
+        print()
+'''
+#VERTICALEMENTE
+'''
+for fila in range( len(tablero_1)): # fila: 0, 1, 2, 3, 4, 5, 6, 7
+    
+    columnas_aux = []
+    
+    for columna in range ( len(tablero_1) ):    #columna: 0, 1, 2, 3, 4, 5, 6, 7
+        if columna < (len(tablero_1) / 2):
+            columnas_aux.append (tablero_1 [fila][columna] )    
+            tablero_1 [fila][columna] = tablero_1 [fila][ len(tablero_1) - 1 - columna]
+        
+        else:
+            tablero_1 [fila][columna] = columnas_aux [ len(tablero_1) - 1 - columna ]
+
+        #print(tablero_1[fila])             8    
+
+print('tablero espejado\n')
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
+            print(tablero_1[i][j], end ='  ')
+        print()  
+'''
+#Trasposicion de matrices
+#CARTA LAYOUT
+'''
+matriz = []
+
+for i in range(4):
+    matriz.append([])
+    for j in range(4):
+        if i==0:
+            matriz[i].append('A')
+        else:
+            matriz[i].append('1')
+
+for i in range(4):
+    for j in range(4):
+        print(matriz[i][j], end =' ')
+    print()
+
+aux=[["a"]*len(matriz)]*len(matriz[0])
+for i in range(len(aux)):
+   for j in range(len(aux[i])):
+       aux[i][j] = matriz[j][i]
+
+print()
+
+for i in range(4):
+    for j in range(4):
+        print(aux[i][j], end =' ')
+    print()
 '''
