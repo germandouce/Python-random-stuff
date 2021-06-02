@@ -731,7 +731,7 @@ a = random.randint(1,10)
 print(a)
 '''
 #Espejar filas y columnas
-#Juego cart toti
+#Juego cart TOTI
 '''
 tam_matriz = int(input('tamaño: '))
 
@@ -819,7 +819,7 @@ for i in range(tam_matriz):
         print()  
 '''
 #Trasposicion de matrices
-#CARTA LAYOUT
+#CARTA FATALITY 
 '''
 matriz = []
 
@@ -836,7 +836,9 @@ for i in range(4):
         print(matriz[i][j], end =' ')
     print()
 
-aux=[["a"]*len(matriz)]*len(matriz[0])
+aux=[ ["a"]*len(matriz) ] *len(matriz[0])
+
+print(aux)
 for i in range(len(aux)):
    for j in range(len(aux[i])):
        aux[i][j] = matriz[j][i]
@@ -846,5 +848,126 @@ print()
 for i in range(4):
     for j in range(4):
         print(aux[i][j], end =' ')
+    print()
+'''
+
+tam_matriz = int(input('tamaño: '))
+
+tablero_1=[]
+for fila in range(tam_matriz):
+    tablero_1.append([])
+    for columna in range(tam_matriz):
+        tablero_1[fila].append('')
+
+elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S',
+'Cl', 'Zr', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga',  'Ge',
+'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te',
+'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu', 'Pt', 'Au', 'Hg', 
+'Pb', 'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'U', 'Np','Es', 'Rf']
+
+
+elementos_xa_tablero =[]
+
+for i in range(int((tam_matriz**2)/2)):
+    elegido = choice(elementos)
+    elementos_xa_tablero.append(elegido)
+    elementos_xa_tablero.append(elegido)
+    elementos.pop(elementos.index(elegido))
+
+print(int((tam_matriz**2)/2))
+shuffle(elementos_xa_tablero)
+
+indice = 0
+for fila in range(tam_matriz):
+    for columna in range(tam_matriz):
+        tablero_1[fila][columna] = elementos_xa_tablero[indice]
+        indice += 1 
+
+print('tablero cargado\n')
+for i in range(tam_matriz):
+        for j in range(tam_matriz):
+            print(tablero_1[i][j], end ='  ')
+        print()
+
+#TRSPOSICION de tablero
+
+#METODO XA COPIAR TABLERO SIN HACER CAGADA
+#el metodo .copy() hace q siga apuntando a la misma direc de memoria!!! NO USAR!!!
+'''
+
+l=[[1],[2],[3]]
+
+
+print(l)
+#print('tras',tablero_traspuesto)
+
+l_copiada = []
+for i in range(3):
+    l_copiada.append (['A'])
+
+for i in range (len(l)):
+    for j in range(1):
+        l_copiada [i][j] = l[i][j]
+
+l_copiada [0][0]= 0    
+l_copiada [1][0] =0
+
+
+#print('tras dsps',tablero_traspuesto)
+
+print(l_copiada)
+print('original',l)
+
+l=[[1],2,3]
+print(l)
+l_copiada [0][0]=0
+l_copiada [1] = 0
+print(l)
+
+'''
+#NO HACER !!!
+'''
+tablero_traspuesto = tablero_1.copy()
+
+'''
+#HCAER ASI!!
+'''
+#creo tablero aux xa colocar la traspuesta en el
+
+def traspongo(tablero_1):
+
+    tablero_traspuesto = []    #creo un tablero aux de nuevo. Intente usar el metodo .copy() pero me tocaba el 
+    for fila in range():      #tabelro original
+        tablero_traspuesto.append([])
+        for columna in range(tam_matriz): 
+            tablero_traspuesto[fila].append('AUX')
+
+    #print('tablero traspuesto aux')
+    #print(tablero_traspuesto)
+    #print(tablero_1)
+    #copio la traspuesta en el
+
+
+    for fila in range( len(tablero_traspuesto) ):
+            for columna in range( len(tablero_traspuesto) ):
+                tablero_traspuesto[fila][columna] = tablero_1[columna][fila]
+                #la columna de la traspuesta, es la fila de la original y viceversa
+    
+    print('tablero traspuesto\n')
+    for fila in range( len(tablero_traspuesto) ):
+            for columna in range( len(tablero_traspuesto) ):
+                print(tablero_traspuesto[fila][columna], end ='  ' )
+            
+            print()
+    
+    return tablero_traspuesto
+
+tablero_1 = traspongo(tablero_1)
+
+print('tablero_1 dsps de espejar FUERRA DE TRASPONGO')
+for i in range( tam_matriz ):
+    for j in range( tam_matriz ):
+        print(tablero_1[i][j], end ='  ' )
+            
     print()
 '''
