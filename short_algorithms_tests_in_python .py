@@ -851,6 +851,8 @@ for i in range(4):
     print()
 '''
 
+#TRSPOSICION de tablero
+'''
 tam_matriz = int(input('tamaño: '))
 
 tablero_1=[]
@@ -888,11 +890,11 @@ for i in range(tam_matriz):
         for j in range(tam_matriz):
             print(tablero_1[i][j], end ='  ')
         print()
-
-#TRSPOSICION de tablero
+'''
 
 #METODO XA COPIAR TABLERO SIN HACER CAGADA
 #el metodo .copy() hace q siga apuntando a la misma direc de memoria!!! NO USAR!!!
+
 '''
 
 l=[[1],[2],[3]]
@@ -970,4 +972,27 @@ for i in range( tam_matriz ):
         print(tablero_1[i][j], end ='  ' )
             
     print()
+'''
+#pavadita de orden...
+'''
+elementos =['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na',
+    'Mg', 'Al', 'Si', 'P', 'S', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'U', 'Y', 'Rf',
+    'V','Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga',  'Ge', 'As', 'Se', 
+    'Br', 'Kr', 'Rb', 'Sr', 'Cl', 'Ru', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te', 
+    'I', 'Xe', 'Cs', 'Ba', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Lu',
+    'Pt', 'Au', 'Hg', 'Pb', 'Bi', 'Po', 'Rn', 'Fr', 'Ra', 'Zr', 'Np','Es']
+
+print(len(elementos))
+'''
+#BUEN DATO DE FUNCIONES EN PYTHON
+#OJO MYPY NO DETECTA ESTO!!!
+'''
+def n_n (n:str) -> None:
+    print(n)
+    
+    #return n
+    #si no pongo return, devuelve predeterminadamente None
+
+a = n_n('hola') #a = None
+print(a)    #imprime None
 '''
