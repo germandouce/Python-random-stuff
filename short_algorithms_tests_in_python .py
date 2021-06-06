@@ -996,3 +996,10 @@ def n_n (n:str) -> None:
 a = n_n('hola') #a = None
 print(a)    #imprime None
 '''
+'''
+def imprimo(tupla):
+    print(tupla[1])
+
+l =list()
+imprimo ( (l,2) )
+'''
