@@ -1026,3 +1026,15 @@ def validar_opcion(opc_minimas: int, opc_maximas: int, texto: str = '') -> str:
     
     return opc
 '''
+#DICCIONARIOS!!
+
+#ej. de como appendearle un ele a una lista que esta com valor del diccionario:
+'''
+dict = {}
+dict['hola'] = []
+dict['hola'].append('a')
+dict['hola'].append('pepe')
+print(dict)
+'''
+#OJO al comparar strings no olvidar el .lower() o .upper() !!!!
+ 
