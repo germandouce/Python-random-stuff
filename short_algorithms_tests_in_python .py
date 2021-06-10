@@ -1031,12 +1031,14 @@ def validar_opcion(opc_minimas: int, opc_maximas: int, texto: str = '') -> str:
 #ej. de como appendearle un ele a una lista que esta com valor del diccionario:
 
 dict = {}
-dict['hola'] = []
-dict['hola'].append('a')
-dict['hola'].append('pepe')
-print(dict)
+dict[1] = []
+dict[2]= 8
+dict[3] = 10
 
-dict['hola']
+for clave,valor in dict.items():
+    print(clave)
+
+
 #OJO al comparar strings no olvidar el .lower() o .upper() !!!!
 '''
 dict = {}
@@ -1052,6 +1054,7 @@ for clave in dict.keys() :
 
 print(max_clave)
 '''
+#Dicccionario de diccionarios
 '''
 codigo_crema = 100
 tipo_envase = 300
