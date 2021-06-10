@@ -1029,12 +1029,86 @@ def validar_opcion(opc_minimas: int, opc_maximas: int, texto: str = '') -> str:
 #DICCIONARIOS!!
 
 #ej. de como appendearle un ele a una lista que esta com valor del diccionario:
-'''
+
 dict = {}
 dict['hola'] = []
 dict['hola'].append('a')
 dict['hola'].append('pepe')
 print(dict)
-'''
+
+dict['hola']
 #OJO al comparar strings no olvidar el .lower() o .upper() !!!!
- 
+'''
+dict = {}
+dict['medio'] = 9
+dict['grande'] = 0
+dict['chico'] = 423
+
+max_valor = max(dict.values())
+max_clave = ''
+for clave in dict.keys() :
+    if dict[clave] == max_valor:
+        max_clave = clave 
+
+print(max_clave)
+'''
+'''
+codigo_crema = 100
+tipo_envase = 300
+cantidad_envases = 8
+
+#pedido uno
+# cursos = dict()
+# cod_curso = input("Código(id): ")
+# cursos[cod_curso] = dict()
+# cursos[cod_curso]["Nombre"] = input("Nombre del curso: ")
+# cursos["Codigo"] = cod_curso
+
+pedidos = dict()
+
+
+if codigo_crema not in pedidos:     #si la crema no fue pedida
+    pedidos[codigo_crema] = dict()
+    pedidos[codigo_crema][tipo_envase] = cantidad_envases
+
+else:                               # si ya esta la crema chequeo el envase
+    if tipo_envase not in pedidos[codigo_crema]:
+        pedidos[codigo_crema][tipo_envase] = cantidad_envases
+    else:
+        pedidos[codigo_crema][tipo_envase] += cantidad_envases
+
+#pedido 2
+codigo_crema = 100
+tipo_envase = 500
+cantidad_envases = 6
+
+if codigo_crema not in pedidos:     #si la crema no fue pedida
+    pedidos[codigo_crema] = dict()
+    pedidos[codigo_crema][tipo_envase] = cantidad_envases
+
+else:                               # si ya esta la crema chequeo el envase
+    if tipo_envase not in pedidos[codigo_crema]:
+        pedidos[codigo_crema][tipo_envase] = cantidad_envases
+    else:
+        pedidos[codigo_crema][tipo_envase] += cantidad_envases
+
+#pedido 3
+codigo_crema = 200
+tipo_envase = 500
+cantidad_envases = 0
+
+if codigo_crema not in pedidos:     #si la crema no fue pedida
+    pedidos[codigo_crema] = dict()
+    pedidos[codigo_crema][tipo_envase] = cantidad_envases
+
+else:                               # si ya esta la crema chequeo el envase
+    if tipo_envase not in pedidos[codigo_crema]:
+        pedidos[codigo_crema][tipo_envase] = cantidad_envases
+    else:
+        pedidos[codigo_crema][tipo_envase] += cantidad_envases
+
+
+
+print(pedidos)
+                
+'''
