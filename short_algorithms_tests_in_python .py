@@ -1028,17 +1028,6 @@ def validar_opcion(opc_minimas: int, opc_maximas: int, texto: str = '') -> str:
 '''
 #DICCIONARIOS!!
 
-#ej. de como appendearle un ele a una lista que esta com valor del diccionario:
-
-dict = {}
-dict[1] = []
-dict[2]= 8
-dict[3] = 10
-
-for clave,valor in dict.items():
-    print(clave)
-
-
 #OJO al comparar strings no olvidar el .lower() o .upper() !!!!
 '''
 dict = {}
@@ -1110,8 +1099,16 @@ else:                               # si ya esta la crema chequeo el envase
     else:
         pedidos[codigo_crema][tipo_envase] += cantidad_envases
 
-
-
-print(pedidos)
-                
+print(pedidos)                
 '''
+
+#ej varios...
+#
+
+dict = {}
+dict[1] = []
+dict[2]= 8
+dict[3] = 10
+
+for clave,valor in dict.items():
+    print(clave)
