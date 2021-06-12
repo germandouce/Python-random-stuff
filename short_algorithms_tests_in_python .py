@@ -1105,10 +1105,12 @@ print(pedidos)
 #ej varios...
 #
 
-dict = {}
-dict[1] = []
-dict[2]= 8
-dict[3] = 10
+# dict = {}
+# dict[1] = []
+# dict[2]= 8
+# dict[3] = 10
 
-for clave,valor in dict.items():
-    print(clave)
+# for clave,valor in dict.items():
+#     print(clave)
+
+print( {'B','N','G'} - {'B'} - {'G'})
