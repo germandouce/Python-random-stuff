@@ -1113,4 +1113,8 @@ print(pedidos)
 # for clave,valor in dict.items():
 #     print(clave)
 
-print( {'B','N','G'} - {'B'} - {'G'})
+#print( {'B','N','G'} - {'B'} - {'G'})
+
+l = [ ['a',1], ['b',2], ['c',2] ]
+
+print( max(l))
