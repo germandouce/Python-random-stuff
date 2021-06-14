@@ -1114,7 +1114,8 @@ print(pedidos)
 #     print(clave)
 
 #print( {'B','N','G'} - {'B'} - {'G'})
-
+'''
 l = [ ['w',1], ['b',2], ['c',2] ]
 
 print( max(l))
+'''
