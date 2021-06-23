@@ -1118,4 +1118,27 @@ print(pedidos)
 l = [ ['w',1], ['b',2], ['c',2] ]
 
 print( max(l))
+''' 
+'''
+arch=open(nom,"r",encoding="utf8")
+    
+    pa=[]
+    for linea in arch:
+       
+        linea=linea.split(",")
+        pa.append(linea)
+    arch.close()
+    datos=[]
+    for i in range(1,26,3):
+        for j in range(len(pa[i])):
+            datos.append(pa[i][j])
+    print(datos)
+    datos.remove('\n')
+    datos.remove('')
+    print()
+    print(datos)
+    print()
+    conj_datos=set(datos)    
+    
+    print(conj_datos)    
 '''
