@@ -1142,3 +1142,32 @@ arch=open(nom,"r",encoding="utf8")
     
     print(conj_datos)    
 '''
+#import os
+#"3T 5P 2M 6B 2K" =550
+
+def calculadora (precios,productos):
+    
+    list_productos = productos.split()
+    
+    tot = 0
+    for prod in list_productos:
+        for fruta, precio in precios.items():
+            if fruta[0] == prod[1].upper(): #fruta[0] es la primera letra de cada fruta;
+                tot += precio*int(prod[0]) #prod[1] la lera ingresada
+    
+    return tot                              #prod[0] el precio de c/fruta
+
+
+def main():
+    precios = {
+            'Tomate': 35,
+            'Banana': 20,
+            'Kiwi': 70,
+            'Mandarina': 30,
+            'Pera': 25,
+            }
+    productos = input('ingreso: ')
+    
+    print(calculadora (precios,productos) )
+
+main()
