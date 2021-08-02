@@ -1145,6 +1145,7 @@ arch=open(nom,"r",encoding="utf8")
 #import os
 #"3T 5P 2M 6B 2K" =550
 
+'''
 def calculadora (precios,productos):
     
     list_productos = productos.split()
@@ -1171,3 +1172,8 @@ def main():
     print(calculadora (precios,productos) )
 
 main()
+'''
+#RickRolling
+import webbrowser
+webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', new=0, autoraise=True)
+print("You've just been rickrolled!")
